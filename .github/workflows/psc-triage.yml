@@ -1,0 +1,13 @@
+name: Automate triage for PSC issues
+
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled]
+
+jobs:
+  psc-triage:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: tallclair/k8s-psc-triage@master
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
